@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Tweet</th>
+        <th>Created Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        ajax: '/api/data',
+        columns: [
+          {data: 'id',orderable: false},
+          {data: 'tweet',orderable: false},
+          {data: 'created_date'}
+        ],
+      });
+    });
+  </script>
+{% endblock %}
